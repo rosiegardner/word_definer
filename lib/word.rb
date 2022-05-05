@@ -1,13 +1,17 @@
 require('pry')
 
 class Word
-  @@words = {}
+  attr_reader :id, :name
 
-  def initialize(word)
+  @@words = {}
+  @@total_rows = 0
+
+  def initialize(word, id)
     @word = word
   end
 
   def self.all
     @@words.values()
   end
+
 end

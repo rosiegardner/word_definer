@@ -6,4 +6,8 @@ class Word
   def initialize(word)
     @word = word
   end
+
+  def self.all
+    @@words.values()
+  end
 end

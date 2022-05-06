@@ -5,7 +5,7 @@ describe '#Word' do
   before(:each) do
     Word.clear()
   end
-  
+
   describe('#save') do
     it("saves a word") do
       word = Word.new("Joyful", nil)
@@ -38,6 +38,16 @@ describe '#Word' do
       word = Word.new("Gloomy", nil)
       word2 = Word.new("Gloomy", nil)
       expect(word).to(eq(word2))
+    end
+  end
+
+  describe('.find') do
+    it("find a word by id") do
+      word = Word.new("Joyful", nil)
+      word.save()
+      word2 = Word.new("Gloomy", nil)
+      word2.save()
+      expect(Word.find(word.id)).to(eq(word))
     end
   end
 

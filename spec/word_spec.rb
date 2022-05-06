@@ -14,8 +14,16 @@ describe '#Word' do
       word.save()
       word2 = Word.new("Gloomy", nil)
       word2.save()
-      expect(Album.all).to(equal([word, word2]))
+      expect(Word.all).to(eq([word, word2]))
     end
   end
-  
+
+  describe('#==') do
+    it("is the same word if it has the same attributes as another word") do
+      word = Word.new("Gloomy", nil)
+      word2 = Word.new("Gloomy", nil)
+      expect(word).to(eq(word2))
+    end
+  end
+
 end

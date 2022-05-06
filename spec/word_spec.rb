@@ -56,7 +56,7 @@ describe '#Word' do
       word = Word.new("Joyful", nil)
       word.save()
       word.update("Exuberant")
-      expect(word.word).to(eq("Exuberant"))
+      expect(word.name).to(eq("Exuberant"))
     end
   end
 

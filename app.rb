@@ -17,6 +17,7 @@ get('/words') do
 end
 
 get('/words/new') do
+  erb(:new_word)
   # "This will take us to a page with a form for adding a new words."
 end
 

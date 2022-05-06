@@ -28,8 +28,8 @@ get('/words/:id') do
 end
 
 post('/words') do
-  word = params[:word_word]
-  word = Word.new(word, nil)
+  name = params[:word_name]
+  word = Word.new(name, nil)
   word.save()
   @words = Word.all()
   erb(:words)
@@ -38,14 +38,25 @@ post('/words') do
 end
 
 get('/words/:id/edit') do
+  @words = Word.find(params[:id].to_i())
+  erb(:update_word)
   # "This will take us to a page with a form for updating a word with an ID of #{params[:id]}."
 end
 
-patch('/wordss/:id') do
+patch('/words/:id') do
+  @words = Word.find(params[:id].to_i())
+  @words.update(params[:word])
+  @words = Word.all
+  erb(:words)
   # "This route will update a word. We can't reach it with a URL. In a future lesson, we will use a form that specifies a PATCH action to reach this route."
 end
 
 delete('/words/:id') do
+  @words = Album.find(params[:id].to_i())
+  @words.delete()
+  @words = Album.all
+  erb(:words)
+
   # "This route will delete an word. We can't reach it with a URL. In a future lesson, we will use a delete button that specifies a DELETE action to reach this route."
 end
 

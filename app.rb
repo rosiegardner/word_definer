@@ -22,10 +22,18 @@ get('/words/new') do
 end
 
 get('/words/:id') do
+  @words = Word.find(params[:id].to_i())
+  erb(:words)
   # "This route will show a specific word based on its ID. The value of ID here is #{params[:id]}."
 end
 
 post('/words') do
+  word = params[:word_word]
+  word = Word.new(word, nil)
+  word.save()
+  @words = Word.all()
+  erb(:words)
+
   # "This route will add a word to our list of wordss. We can't access this by typing in the URL. In a future lesson, we will use a form that specifies a POST action to reach this route."
 end
 

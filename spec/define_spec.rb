@@ -64,9 +64,9 @@ describe '#Define' do
       word2.save
       defined = Define.new("Dark or poorly lit, especially so as to appear frightening", @words.id, nil)
       defined.save()
-      defined2 = Define.new("A rainy and grey atmosphere", words2.id, nil)
+      defined2 = Define.new("A rainy and grey atmosphere", word2.id, nil)
       defined2.save()
-      expect(Define.find_by_definition(words2.id)).to(eq([defined2]))
+      expect(Define.find_by_definition(word2.id)).to(eq([defined2]))
     end
   end
 

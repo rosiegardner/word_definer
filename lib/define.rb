@@ -27,6 +27,16 @@ class Define
     @@words_defined[id]
   end
 
+  def self.find_by_definition(def_id)
+    definitions = []
+    @@words_defined.values.each do |defined|
+      if defined.words_id == def_id
+        definitions.push(defined)
+      end
+    end
+    definitions
+  end
+
   def update(name, words_id)
     self.name = name
     self.words_id = words_id

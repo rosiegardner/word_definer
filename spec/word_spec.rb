@@ -8,9 +8,9 @@ describe '#Word' do
 
   describe('#save') do
     it("saves a word") do
-      word = Word.new("Joyful", nil)
+      word = Word.new("Bow", nil)
       word.save()
-      word2 = Word.new("Gloomy", nil)
+      word2 = Word.new("Lead", nil)
       word2.save()
       expect(Word.all).to(eq([word, word2]))
     end
@@ -20,7 +20,7 @@ describe '#Word' do
     it("clears all words") do
       word = Word.new("Joyful", nil)
       word.save()
-      word2 = Word.new("Gloomy", nil)
+      word2 = Word.new("Happy", nil)
       word2.save()
       Word.clear()
       expect(Word.all).to(eq([]))
@@ -35,17 +35,17 @@ describe '#Word' do
 
   describe('#==') do
     it("is the same word if it has the same attributes as another word") do
-      word = Word.new("Gloomy", nil)
-      word2 = Word.new("Gloomy", nil)
+      word = Word.new("Blue", nil)
+      word2 = Word.new("Blue", nil)
       expect(word).to(eq(word2))
     end
   end
 
   describe('.find') do
     it("find a word by id") do
-      word = Word.new("Joyful", nil)
+      word = Word.new("Bow", nil)
       word.save()
-      word2 = Word.new("Gloomy", nil)
+      word2 = Word.new("Lead", nil)
       word2.save()
       expect(Word.find(word.id)).to(eq(word))
     end
@@ -55,31 +55,19 @@ describe '#Word' do
     it("updates a word by id") do
       word = Word.new("Joyful", nil)
       word.save()
-      word.update("Exuberant")
-      expect(word.name).to(eq("Exuberant"))
+      word.update("Happy")
+      expect(word.name).to(eq("Happy"))
     end
   end
 
   describe('#delete') do
     it("deletes a word by id") do
-      word = Word.new("Joyful", nil)
+      word = Word.new("Happy", nil)
       word.save()
-      word2 = Word.new("Gloomy", nil)
+      word2 = Word.new("Joyful", nil)
       word2.save()
       word.delete()
       expect(Word.all).to(eq([word2]))
-    end
-  end
-
-  describe('#definitions') do
-    it("returns a words definition") do
-      word = Word.new("Gloomy", nil)
-      word.save()
-      defined = Define.new("Dark or poorly lit, especially so as to appear frightening", word.id, nil)
-      defined.save()
-      defined2 = Define.new("A rainy and grey atmosphere", word.id, nil)
-      defined2.save()
-      expect(word.definitions).to(eq([defined, defined2]))
     end
   end
 

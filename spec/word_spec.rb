@@ -71,4 +71,16 @@ describe '#Word' do
     end
   end
 
+  describe('#definitions') do
+    it("returns a words definition") do
+      word = Word.new("Gloomy", nil)
+      word.save()
+      defined = Define.new("Dark or poorly lit, especially so as to appear frightening", word.id, nil)
+      defined.save()
+      defined2 = Define.new("A rainy and grey atmosphere", word.id, nil)
+      defined2.save()
+      expect(word.definitions).to(eq([defined, defined2]))
+    end
+  end
+
 end

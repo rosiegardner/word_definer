@@ -19,8 +19,12 @@ class Word
     @@words[self.id] = Word.new(self.name, self.id)
   end
 
-  def ==(word_to_compare)
-    self.name() == word_to_compare.name()
+  def ==(words_to_compare)
+    self.name() == words_to_compare.name()
+  end
+
+  def definition
+    Define.find_by_word(self.id)
   end
 
   def self.clear

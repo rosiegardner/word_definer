@@ -1,5 +1,6 @@
 require('rspec')
 require('word')
+require('define')
 
 describe '#Word' do
   before(:each) do
@@ -70,5 +71,17 @@ describe '#Word' do
       expect(Word.all).to(eq([word2]))
     end
   end
+
+  describe('#definition') do
+    it("returns a words definition") do
+      word = Word.new("Atmosphere", nil)
+      word.save()
+      defined = Define.new("The gases surrounding Earth", word.id, nil)
+      defined2 = Define.new("The mood of a Situation", word.id, nil)
+      defined2.save()
+      expect(word.definition).to(eq([defined, defined2]))
+    end
+  end
+
 
 end

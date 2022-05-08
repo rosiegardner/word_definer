@@ -1,18 +1,18 @@
 class Define
   attr_reader :id
-  attr_accessor :name, :words_id
+  attr_accessor :word_content, :words_id
 
   @@words_defined = {}
   @@total_rows = 0
 
-  def initialize(name, words_id, id)
-    @name = name
+  def initialize(word_content, words_id, id)
+    @word_content = word_content
     @words_id = words_id
     @id = id || @@total_rows += 1
   end
 
   def ==(definitions_to_compare)
-    (self.name() == definitions_to_compare.name()) && (self.words_id() == definitions_to_compare.words_id())
+    (self.word_content() == definitions_to_compare.word_content()) && (self.words_id() == definitions_to_compare.words_id())
   end
 
   def self.all
@@ -20,27 +20,31 @@ class Define
   end
 
   def save
-    @@words_defined[self.id] = Define.new(self.name, self.words_id, self.id)
+    @@words_defined[self.id] = Define.new(self.word_content, self.words_id, self.id)
+  end
+
+  def word
+    Word.find(self.words_id)
   end
 
   def self.find(id)
     @@words_defined[id]
   end
 
-  def self.find_by_definition(def_id)
+  def self.find_by_word(wrd_id)
     definitions = []
     @@words_defined.values.each do |defined|
-      if defined.words_id == def_id
+      if defined.words_id == wrd_id
         definitions.push(defined)
       end
     end
     definitions
   end
 
-  def update(name, words_id)
-    self.name = name
+  def update(word_content, words_id)
+    self.word_content = word_content
     self.words_id = words_id
-    @@words_defined[self.id] = Define.new(self.name, self.words_id, self.id)
+    @@words_defined[self.id] = Define.new(self.word_content, self.words_id, self.id)
   end
 
   def delete

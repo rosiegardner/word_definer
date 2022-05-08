@@ -1,6 +1,7 @@
 require('sinatra')
 require('sinatra/reloader')
 require('./lib/word')
+require('./lib/define')
 require('pry')
 also_reload('lib/**/*.rb')
 
@@ -23,7 +24,7 @@ end
 
 get('/words/:id') do
   @words = Word.find(params[:id].to_i())
-  erb(:words)
+  erb(:word)
   # "This route will show a specific word based on its ID. The value of ID here is #{params[:id]}."
 end
 
@@ -45,7 +46,7 @@ end
 
 patch('/words/:id') do
   @words = Word.find(params[:id].to_i())
-  @words.update(params[:word])
+  @words.update(params[:words])
   @words = Word.all
   erb(:words)
   # "This route will update a word. We can't reach it with a URL. In a future lesson, we will use a form that specifies a PATCH action to reach this route."

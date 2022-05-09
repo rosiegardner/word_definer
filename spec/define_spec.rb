@@ -61,7 +61,7 @@ describe '#Define' do
 
   describe('.find_by_word') do
     it("finds definitions for a word") do
-      word2 = Define.new("Climate", nil)
+      word2 = Word.new("Climate", nil)
       word2.save
       defined = Define.new("The mood of a Situation", @words.id, nil)
       defined.save()

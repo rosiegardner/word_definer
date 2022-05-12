@@ -5,7 +5,7 @@
   <% if @words.definition %>
     <ul>
       <% @words.definition.each do |define| %>
-        <li><a href="/words/<%= @words.id %>/definition/<%= define.id %>"><%= define.word %></a></li>
+        <li><a href="/words/<%= @words.id %>/definition/<%= define.id %>"><%= define.word_content %></a></li>
       <% end %>
     </ul>
   <% else %>
@@ -14,7 +14,7 @@
 
 <h4>Add a Definition:</h4>
 
-<form action="/words/<%= @words.id %>/definiton" method="post">
+<form action="/words/<%= @words.id %>/definition" method="post">
   <div class="form-group">
     <label for="define_word">Define word:</label>
     <input id="define_word" name="define_word" class="form-control" type="text">

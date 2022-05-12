@@ -68,7 +68,7 @@ get('/words/:id/definition/:define_id') do
 end
 
 # Post a new song. After the song is added, Sinatra will route to the view for the album the song belongs to.
-post('/words/:id/definiton') do
+post('/words/:id/definition') do
   @words = Word.find(params[:id].to_i())
   define = Define.new(params[:define_word], @words.id, nil)
   define.save()

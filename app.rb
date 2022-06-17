@@ -46,7 +46,7 @@ end
 
 patch('/words/:id') do
   @words = Word.find(params[:id].to_i())
-  @words.update(params[:words])
+  @words.update(params[:name])
   @words = Word.all
   erb(:words)
   # "This route will update a word. We can't reach it with a URL. In a future lesson, we will use a form that specifies a PATCH action to reach this route."

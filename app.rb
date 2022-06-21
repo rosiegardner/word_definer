@@ -61,13 +61,13 @@ delete('/words/:id') do
   # "This route will delete an word. We can't reach it with a URL. In a future lesson, we will use a delete button that specifies a DELETE action to reach this route."
 end
 
-# Get the detail for a specific song such as lyrics and songwriters.
+# Get the detail for a specific word such as lyrics and songwriters.
 get('/words/:id/definition/:define_id') do
   @definition = Define.find(params[:define_id].to_i())
   erb(:definition)
 end
 
-# Post a new song. After the song is added, Sinatra will route to the view for the album the song belongs to.
+# Post a new definition. After the song is added, Sinatra will route to the view for the album the song belongs to.
 post('/words/:id/definition') do
   @words = Word.find(params[:id].to_i())
   define = Define.new(params[:define_word], @words.id, nil)
@@ -75,7 +75,7 @@ post('/words/:id/definition') do
   erb(:word)
 end
 
-# Edit a song and then route back to the album view.
+# Edit a definition and then route back to the album view.
 patch('/words/:id/definition/:define_id') do
   @words = Word.find(params[:id].to_i())
   define = Define.find(params[:define_id].to_i())
@@ -83,7 +83,7 @@ patch('/words/:id/definition/:define_id') do
   erb(:word)
 end
 
-# Delete a song and then route back to the album view.
+# Delete a definition and then route back to the album view.
 delete('/words/:id/definition/:define_id') do
   define = Define.find(params[:define_id].to_i())
   define.delete

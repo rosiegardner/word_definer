@@ -9,14 +9,17 @@
 * Ruby
 * Pry
 * Sinatra
+* Capybara
 
 ## Setup/Installation Requirements
 
 * https://github.com/rosiegardner/word_definer.git
 * Clone of download this repository onto your desktop
-* Navigate to the top-level of directory
-* Open VScode.
-* CD into root directory and bundle install project
+* CD into root directory
+* In command line:
+* `bundle install`
+* `ruby app.rb`
+* Navigate to 'localhost:4567' in browser
 
 ## Known Bugs
 
